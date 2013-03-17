@@ -1,0 +1,51 @@
+<form class="form-inline">
+    <div class="btn-group">
+        <button class="btn disabled" ng-click="edit()">Muuda</button>
+        <button class="btn disabled" ng-click="delete()">Kustuta</button>
+        <button class="btn" ng-click="save()">Salvesta</button>
+    </div>
+    <div class="input-append">
+        <input type="text" placeholder="Märksõnad" ng-model="user.keywords" />
+        <button class="btn" ng-click="search()">Otsi</button>
+    </div>
+    <select style="float:right" ng-change="search()" ng-model="user.sortOrder" ng-options="key as value for (key, value) in sortOrders"></select>
+</form>
+
+<table class="table-hover">
+    <thead>
+        <tr>
+            <th class="span3 text-left">
+                <label style="font-weight:bold;display:inline;"><input type="checkbox" ng-model="checkAll" style="margin: 0 15px 1px 0" />Pilt</label>
+            </th>
+            <th class="text-left">Nimi</th>
+            <th class="span2 text-left">Hind</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-init="check.index = false" ng-repeat="(index, item) in list">
+            <td class="span2">
+                <label style="margin-bottom:0;"><input type="checkbox" ng-model="check[index]" style="margin: 0 15px 1px 0"><img src="{{item.thumb}}" class="img-rounded" /></label>
+            </td>
+            <td colspan="2" style="padding:0">
+
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <p><a href="{{item.link}}" target="_blank">{{item.title}}</a></p>
+                            <p>{{item.timeLeft}}</p>
+                            <p>
+                                <span class="label" ng-repeat="label in item.labels">{{label}}</span>
+                            </p>
+                        </td>
+                        <td class="span2">
+                            <p>{{item.price}} {{item.priceCurrency}}
+                                <span class="label label-info">{{item.bidCount}}</span></p>
+                            <p>{{item.shipping}} {{item.shippingCurrency}}</p>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

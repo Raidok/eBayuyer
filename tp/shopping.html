@@ -1,0 +1,37 @@
+<form class="form-inline">
+    <div class="btn-group">
+        <button class="btn" ng-click="new()">Lisa uus</button>
+        <button class="btn">Kustuta</button>
+        <button class="btn disabled">Muuda</button>
+    </div>
+        <input type="text" placeholder="Märksõnad" ng-bind="keywords"/>
+        <button class="btn" ng-click="search()">Otsi</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="span1"><label style="font-weight:bold;display:inline;"><input type="checkbox" ng-model="checkAll" style="margin: 0 15px 1px 0">Nr</label></div></th>
+            <th class="span1">Pilt</th>
+            <th class="span2">Nimi</th>
+            <th class="span1">Aega</th>
+            <th class="span1">Pakkumisi</th>
+            <th class="span1">Hind</th>
+            <th class="span1">Saatmiskulud</th>
+            <th class="span1">Saadab</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="(index, item) in list">
+            <td><label style="margin-bottom:0;"><input type="checkbox" ng-model="check[index]" style="margin: 0 15px 1px 0">{{index+1}}</label></div></td>
+            <td><a href="{{item.url}}" target="_blank">{{item.picture}}</a></td>
+            <td>{{item.name}}</td>
+            <td>{{item.timeLeft}}</td>
+            <td>{{item.bids}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.shipping}}</td>
+            <td>{{item.sends}}</td>
+        </tr>
+    </tbody>
+</table>
