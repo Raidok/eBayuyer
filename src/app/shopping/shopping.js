@@ -27,5 +27,5 @@ function ShoppingCtrl($scope, $rootScope, $location, Shopping)
         var res = Shopping.find({QueryKeywords:'raspberry'}, function() {
             alert(res);
         });   
-    }
+    };
 }

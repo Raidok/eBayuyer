@@ -8,7 +8,7 @@ angular.module('finding', ['ngResource']).factory('Finding', ['$resource', funct
         'RESPONSE-DATA-FORMAT':'JSON',
         'REST-PAYLOAD':'',
         'paginationInput.entriesPerPage':5,
-        'callback':'JSON_CALLBACK',
+        'callback':'JSON_CALLBACK'
     },
     {
         find: {method:'JSONP', isArray: false}
@@ -44,7 +44,7 @@ function FindingCtrl($scope, $rootScope, $location, Finding, Storage)
         }
         var base64 = btoa(string);
         window.open("data:application/octet-stream;base64," + base64);
-    }
+    };
 
 
     $scope.search = function()
@@ -71,10 +71,11 @@ function FindingCtrl($scope, $rootScope, $location, Finding, Storage)
                 function(response)
                 {
                     var result = response.findItemsByKeywordsResponse[0];
+                    var i;
 
                     if (result.errorMessage)
                     {
-                        for (var i = 0, length = result.errorMessage.error.length; i < length; i++)
+                        for (i = 0, length = result.errorMessage.error.length; i < length; i++)
                         {
                             console.error(result.errorMessage.error[i]);
                         }
@@ -90,7 +91,7 @@ function FindingCtrl($scope, $rootScope, $location, Finding, Storage)
                             $scope.items = items;
                         } else {
                             console.log("append "+items.length+" to "+$scope.items.length);
-                            for (var i = 0, size = items.length; i < size; i++)
+                            for (i = 0, size = items.length; i < size; i++)
                             {
                                 $scope.items.push(items[i]);
                             }
@@ -109,7 +110,7 @@ function FindingCtrl($scope, $rootScope, $location, Finding, Storage)
             );
         }
            
-    }
+    };
 
 
     $scope.filterResults = function(rawItems)
@@ -143,17 +144,17 @@ function FindingCtrl($scope, $rootScope, $location, Finding, Storage)
             item.location = rawItem.location[0];
             item.labels = [];
                 item.labels.push(rawItem.paymentMethod[0]);
-                if (rawItem.listingInfo[0].bestOfferEnabled == "true") item.labels.push("PP");
-                if (rawItem.listingInfo[0].buyItNowAvailable == "true") item.labels.push("OK");
-                if (rawItem.listingInfo[0].listingType == "Auction") item.labels.push("oksjon");
-                if (rawItem.listingInfo[0].gift == "true") item.labels.push("kingitus");
-                if (rawItems.isMultiVariationListing && rawItems.isMultiVariationListing[0] == "true") item.labels.push("variatsioonid");
+                if (rawItem.listingInfo[0].bestOfferEnabled == "true") { item.labels.push("PP"); }
+                if (rawItem.listingInfo[0].buyItNowAvailable == "true") { item.labels.push("OK"); }
+                if (rawItem.listingInfo[0].listingType == "Auction") { item.labels.push("oksjon"); }
+                if (rawItem.listingInfo[0].gift == "true") { item.labels.push("kingitus"); }
+                if (rawItems.isMultiVariationListing && rawItems.isMultiVariationListing[0] == "true") { item.labels.push("variatsioonid"); }
                 item.labels.push("test");
 
             items.push(item);
         }
         return items;
-    }
+    };
 
 
     $scope.parseTimeLeft = function(string)
@@ -162,13 +163,13 @@ function FindingCtrl($scope, $rootScope, $location, Finding, Storage)
         var m = re.exec(string);
         timeleft = "";
         if (m != null) {
-            if (m[1] > 0) timeleft += m[1] + "p ";
-            if (m[2] > 0) timeleft += m[2] + "h ";
-            if (m[3] > 0) timeleft += m[3] + "m ";
-            if (m[4] > 0) timeleft += m[4] + "s";
+            if (m[1] > 0) { timeleft += m[1] + "p "; }
+            if (m[2] > 0) { timeleft += m[2] + "h "; }
+            if (m[3] > 0) { timeleft += m[3] + "m "; }
+            if (m[4] > 0) { timeleft += m[4] + "s"; }
         }
         return timeleft;
-    }
+    };
 
     $scope.parseBidCount = function(bidCount)
     {
@@ -177,7 +178,7 @@ function FindingCtrl($scope, $rootScope, $location, Finding, Storage)
             return 'OK';
         }
         return bidCount;
-    }
+    };
 
     var scope = $scope;
     

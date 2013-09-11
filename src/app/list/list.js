@@ -51,23 +51,23 @@ angular.module('list', []).run(function($rootScope)
 function ListCtrl($scope, $rootScope, $location)
 {
     var scope = $scope;
-    scope.sink;
+    //scope.sink;
     $scope.buttonsEnabled ="btn";
     
     $scope.check = [true, false, false];
     
-    $scope.new = function()
+    $scope.addItem = function()
     {
-        $location.path("/new");
-    }
+        $location.path("/addItem");
+    };
 
-    $scope.delete = function(ids)
+    $scope.removeItem = function(ids)
     {
         for (var i = 0; i < ids.length; i++)
         {
             $rootScope.list.splice(ids[i--], 1);    
         }
-    }
+    };
 
     scope.$watch('checkAll', function(newValue, oldValue)
     {
