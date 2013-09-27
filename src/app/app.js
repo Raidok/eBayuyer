@@ -1,9 +1,9 @@
-angular.module( 'eBayuyer', [
+angular.module( 'myDealer', [
   'templates-app',
   'templates-common',
-  'list',
-  'finding',
-  'shopping',
+  'myDealer.overview',
+  'myDealer.finding',
+  'myDealer.shopping',
   'ui.state',
   'ui.route'
 ])
@@ -13,10 +13,11 @@ angular.module( 'eBayuyer', [
 })
 
 .run( function run ( titleService ) {
-  titleService.setSuffix( ' | eBayuyer' );
+  titleService.setSuffix( ' | myDealer' );
 })
 
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
 })
 
 ;
+

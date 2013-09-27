@@ -13,6 +13,7 @@ module.exports = function ( karma ) {
       <% }); %>
       'src/**/*.js',
       'src/**/*.coffee',
+      'vendor/angular-resource/angular-resource.js'
     ],
 
     frameworks: [ 'jasmine' ],
